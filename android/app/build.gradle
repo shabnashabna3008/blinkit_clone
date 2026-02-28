@@ -2,6 +2,17 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
+// 👇 ADD THIS BLOCK HERE - Right after the plugins, before the react block
+project.ext.vectoricons = [
+    iconFontNames: [ 
+        'MaterialIcons.ttf',      // For location, eye, check icons
+        'FontAwesome.ttf',        // For profile icon
+        'Ionicons.ttf',           // For cart, search icons
+        'MaterialCommunityIcons.ttf' // Additional icons if needed
+    ]
+]
+// 👆 END OF ADDED BLOCK
+
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -53,6 +64,10 @@ react {
     /* Autolinking */
     autolinkLibrariesWithApp()
 }
+
+// 👇 ADD THIS LINE AT THE BOTTOM OF THE FILE - After all the existing code
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+// 👆 END OF ADDED LINE
 
 /**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
